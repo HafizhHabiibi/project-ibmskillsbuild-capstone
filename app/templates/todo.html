@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}To-Do List{% endblock %}
+{% block content %}
+<h2>To-Do List - {{ session['username'] }}</h2>
+
+<form method="POST" action="{{ url_for('main.add') }}">
+    <input type="text" name="task" placeholder="Tambah tugas baru" required>
+    <button type="submit">Tambah</button>
+</form>
+
+<ul>
+    {% for t in todo %}
+        <li>
+            {{ t.task }}
+            <a href="{{ url_for('main.delete', id=t.id) }}" onclick="return confirm('Hapus tugas ini?')">❌</a>
+        </li>
+    {% endfor %}
+</ul>
+
+<a href="{{ url_for('main.logout') }}">Logout</a>
+{% endblock %}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}To-Do App{% endblock %}</title>
+    <style>
+        body { font-family: sans-serif; margin: 30px; }
+        .container { max-width: 600px; margin: auto; }
+        input, button { padding: 8px; margin: 4px 0; width: 100%; }
+        .flash { padding: 10px; margin-bottom: 10px; border-radius: 5px; }
+        .flash.success { background-color: #d4edda; color: #155724; }
+        .flash.danger { background-color: #f8d7da; color: #721c24; }
+        .flash.warning { background-color: #fff3cd; color: #856404; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
