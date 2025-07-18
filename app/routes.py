@@ -115,3 +115,29 @@ def delete(id):
 
     flash('Task berhasil dihapus!', 'success')
     return redirect(url_for('main.todo'))
+
+@main.route('/edit/<int:id>', methods=['GET', 'POST'])
+def edit(id):
+    if 'loggedin' not in session:
+        flash('Silahkan login terlebih dulu', 'danger')
+        return redirect(url_for('main.login'))
+    
+    todo = Todo.query.get_or_404(id)
+
+    # pastikan user login yang bisa edit task
+    if todo.user_id != session['id']:
+        abort(403)
+
+    if request.method == 'POST':
+        new_task = request.form.get('task')
+        if not new_task:
+            flash('Task tidak boleh kosong!', 'danger')
+            return redirect(url_for('main.edit', id=id))
+        
+        todo.task = new_task
+        db.session.commit()
+
+        flash('Task berhasil diperbarui', 'success')
+        return redirect(url_for('main.todo'))
+    
+    return render_template('edit.html', todo=todo)

@@ -12,6 +12,7 @@
     {% for t in todo %}
         <li>
             {{ t.task }}
+            <a href="{{ url_for('main.edit', id=t.id) }}">✏️</a>
             <a href="{{ url_for('main.delete', id=t.id) }}" onclick="return confirm('Hapus tugas ini?')">❌</a>
         </li>
     {% endfor %}

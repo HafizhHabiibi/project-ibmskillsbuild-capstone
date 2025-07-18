@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Edit Task{% endblock %}
+
+{% block content %}
+<h2>Edit Task</h2>
+
+<form method="POST" action="{{ url_for('main.edit', id=todo.id) }}">
+    <input type="text" name="task" value="{{ todo.task }}" required>
+    <button type="submit">Simpan Perubahan</button>
+</form>
+
+<p><a href="{{ url_for('main.todo') }}">Kembali ke daftar tugas</a></p>
+{% endblock %}
