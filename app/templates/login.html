@@ -1,11 +1,48 @@
 {% extends 'base.html' %}
 {% block title %}Login{% endblock %}
 {% block content %}
-<h2>Login</h2>
-<form method="POST">
-    <input type="text" name="username" placeholder="Username" required>
-    <input type="password" name="password" placeholder="Password" required>
-    <button type="submit">Login</button>
-</form>
-<p>Belum punya akun? <a href="{{ url_for('main.register') }}">Daftar di sini</a></p>
+<div class="flex items-center justify-center min-h-screen bg-white">
+    <div class="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0">
+        <div class="flex flex-col justify-center p-8 md:p-14">
+
+            <span class="mb-3 text-4xl font-bold">Login</span>
+
+            <!-- Flash messages -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="text-sm p-3 rounded-lg mb-4
+                            {% if category == 'success' %}bg-green-100 text-green-800
+                            {% elif category == 'danger' %}bg-red-100 text-red-800
+                            {% elif category == 'warning' %}bg-yellow-100 text-yellow-800
+                            {% else %}bg-gray-100 text-gray-800
+                            {% endif %}
+                        ">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <!-- Form -->
+            <form action="{{ url_for('main.login') }}" method="POST">
+                <div class="flex flex-col space-y-4">  
+                    <div>
+                        <span class="mb-2 text-md">Username</span>
+                        <input type="text" class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500" name="username" id="username" required>
+                    </div>
+                    <div>
+                        <span class="mb-2 text-md">Password</span>
+                        <input type="password" name="password" id="password" class="w-full p-3 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500 mt-4 mb-4" required>
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-black text-white p-2 rounded-lg mb-6 hover:bg-pink-200 hover:text-black hover:border hover:border-gray-300">Login</button>
+            </form>
+
+            <div class="text-center text-gray-400">
+                Tidak punya akun? <a href="{{ url_for('main.register') }}" class="font-bold text-black">Register</a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
