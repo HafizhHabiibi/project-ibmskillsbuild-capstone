@@ -44,7 +44,7 @@ All tasks are displayed clearly in a dashboard-style layout.
 
 1. Clone the repo:
   ```
-    git clone [https://github.com/your-username/your-repo-name.git](https://github.com/HafizhHabiibi/project-ibmskillsbuild-capstone.git)
+    git clone https://github.com/HafizhHabiibi/project-ibmskillsbuild-capstone.git
   ```
 
 2. Create and activate virtual environment:
@@ -84,6 +84,7 @@ https://project-ibmskillsbuild-to-dolist-habiibi.up.railway.app
 👨‍💻 Author
 
 Hafizh Habiibi Lubis
+
 Capstone Project - IBM SkillsBuild Indonesia
 
 GitHub: [HafizhHabiibi]
