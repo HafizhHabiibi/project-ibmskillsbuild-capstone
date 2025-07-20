@@ -1,13 +1,16 @@
 📝 To-Do List App – IBM SkillsBuild Capstone Project
+
 A simple and powerful web-based task management application built with Flask and PostgreSQL. 
 This project is developed as part of the IBM SkillsBuild Capstone Program, focusing on fundamental full-stack web development with database integration and modern development practices.
 
 🚀 Project Overview
+
 The purpose of this project is to create a functional and user-friendly To-Do List application that allows users to register, log in, and manage their daily tasks.
 This project was built to solve a common problem: how to manage personal tasks efficiently in a minimal yet effective digital tool. 
 The development process followed a structured approach, from designing the database schema and backend routes to implementing a clean and responsive UI.
 
 🛠️ Tech Stack
+
 - Backend: Flask (Python), Flask-SQLAlchemy, Flask-Migrate
 - Database: PostgreSQL (deployed on Railway)
 - Deployment: Railway
@@ -18,6 +21,7 @@ To enhance documentation, the IBM Granite LLM model was used to automatically ge
 This improves the maintainability and accessibility of the code for collaborators and reviewers.
 
 🔐 Features
+
 ✅ User Registration
 Allows new users to register securely with a username and password.
 
@@ -37,9 +41,10 @@ Tasks can be deleted when no longer needed.
 All tasks are displayed clearly in a dashboard-style layout.
 
 ⚙️ Installation & Setup (Local)
+
 1. Clone the repo:
   ```
-    git clone https://github.com/your-username/your-repo-name.git
+    git clone [https://github.com/your-username/your-repo-name.git](https://github.com/HafizhHabiibi/project-ibmskillsbuild-capstone.git)
   ```
 
 2. Create and activate virtual environment:
@@ -79,4 +84,3 @@ https://project-ibmskillsbuild-to-dolist-habiibi.up.railway.app
 Hafizh Habiibi Lubis
 Capstone Project - IBM SkillsBuild Indonesia
 GitHub: [HafizhHabiibi]
-
