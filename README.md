@@ -78,9 +78,12 @@ All tasks are displayed clearly in a dashboard-style layout.
   ```
 
 🌐 Live Demo
+
 https://project-ibmskillsbuild-to-dolist-habiibi.up.railway.app
 
 👨‍💻 Author
+
 Hafizh Habiibi Lubis
 Capstone Project - IBM SkillsBuild Indonesia
+
 GitHub: [HafizhHabiibi]
