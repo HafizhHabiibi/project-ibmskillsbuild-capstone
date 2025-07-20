@@ -1,22 +1,61 @@
 {% extends 'base.html' %}
+
 {% block title %}To-Do List{% endblock %}
+
 {% block content %}
-<h2>To-Do List - {{ session['username'] }}</h2>
+<div class="bg-white p-6 rounded-lg shadow-md">
+    <h2 class="text-2xl font-bold mb-4 text-center">To-Do List - {{ session['username'] }}</h2>
 
-<form method="POST" action="{{ url_for('main.add') }}">
-    <input type="text" name="task" placeholder="Tambah tugas baru" required>
-    <button type="submit">Tambah</button>
-</form>
+    <!-- Flash Message -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="text-sm p-3 rounded-lg mb-4 text-center
+            {% if category == 'success' %}bg-green-100 text-green-800
+            {% elif category == 'danger' %}bg-red-100 text-red-800
+            {% elif category == 'warning' %}bg-yellow-100 text-yellow-800
+            {% else %}bg-gray-100 text-gray-800
+            {% endif %}
+          ">
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
 
-<ul>
-    {% for t in todo %}
-        <li>
-            {{ t.task }}
-            <a href="{{ url_for('main.edit', id=t.id) }}">✏️</a>
-            <a href="{{ url_for('main.delete', id=t.id) }}" onclick="return confirm('Hapus tugas ini?')">❌</a>
+    <!-- Form Tambah Tugas -->
+    <form method="POST" action="{{ url_for('main.add') }}" class="flex gap-2 mb-6">
+        <input
+            type="text"
+            name="task"
+            placeholder="Tambah tugas baru"
+            required
+            class="flex-grow p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+        >
+        <button
+            type="submit"
+            class="bg-black text-white px-4 py-2 rounded-md hover:bg-pink-200 transition"
+        >Tambah</button>
+    </form>
+
+    <!-- Daftar Tugas -->
+    <ul class="space-y-2">
+        {% for t in todo %}
+        <li class="flex justify-between items-center bg-gray-100 p-3 rounded-md hover:bg-gray-200 transition">
+            <span>{{ t.task }}</span>
+            <div class="space-x-2">
+                <a href="{{ url_for('main.edit', id=t.id) }}" class="text-blue-500 hover:text-blue-700">✏️</a>
+                <a href="{{ url_for('main.delete', id=t.id) }}" onclick="return confirm('Hapus tugas ini?')" class="text-red-500 hover:text-red-700">❌</a>
+            </div>
         </li>
-    {% endfor %}
-</ul>
+        {% else %}
+        <li class="text-center text-gray-400 italic">Belum ada tugas</li>
+        {% endfor %}
+    </ul>
 
-<a href="{{ url_for('main.logout') }}">Logout</a>
+    <!-- Logout Button -->
+    <div class="mt-6 text-center">
+        <a href="{{ url_for('main.logout') }}" class="text-sm text-black hover:text-pink-600 font-bold">Logout</a>
+    </div>
+</div>
 {% endblock %}
